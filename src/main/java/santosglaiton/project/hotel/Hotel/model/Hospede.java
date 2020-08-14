@@ -1,14 +1,8 @@
 package santosglaiton.project.hotel.Hotel.model;
 
-import com.sun.istack.NotNull;
-import lombok.NonNull;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 public class Hospede implements Serializable {
@@ -18,8 +12,43 @@ public class Hospede implements Serializable {
     private Integer idHospede;
     private String nomeHospede;
     private String cpf;
-    private Quarto quarto;
-    private Date dataDeEntrada;
-    private Date dataDeSaida;
+    private String email;
 
+    public Hospede() {
+    }
+
+    public Hospede(Integer idHospede, String nomeHospede, String cpf, String email) {
+        this.idHospede = idHospede;
+        this.nomeHospede = nomeHospede;
+        this.cpf = cpf;
+        this.email = email;
+    }
+
+    public Integer getIdHospede() {
+        return idHospede;
+    }
+
+    public String getNomeHospede() {
+        return nomeHospede;
+    }
+
+    public void setNomeHospede(String nomeHospede) {
+        this.nomeHospede = nomeHospede;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
