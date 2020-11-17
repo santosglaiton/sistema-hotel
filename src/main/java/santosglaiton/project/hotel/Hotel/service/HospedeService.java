@@ -4,7 +4,6 @@ import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import santosglaiton.project.hotel.Hotel.dto.HospedeDTO;
 import santosglaiton.project.hotel.Hotel.model.Hospede;
 import santosglaiton.project.hotel.Hotel.repositories.HospedeRepository;
 

@@ -19,25 +19,5 @@ public class HospedeServiceTest {
     @InjectMocks
     private HospedeService hospedeService;
 
-    @Test
-    void deveSalvarNovoHospede(){
-        Hospede hospede = new Hospede(null, "Joaõ", "12345678901", "joao@gmail.com");
-        Mockito.when(hospedeRepository.save(hospede)).thenReturn(hospede);
-
-        Hospede atual = hospedeService.save(hospede);
-
-        assertEquals(hospede, atual);
-        Mockito.verify(hospedeRepository, Mockito.times(1)).save(hospede);
-    }
-
-    @Test
-    void deveFalharAoSalvarNovoHospede(){
-
-        Hospede esperado = new Hospede(null, null, "12345678901", "joão@gmail.com");
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            hospedeService.save(esperado);
-        });
-        Mockito.verifyNoInteractions(hospedeRepository);
-    }
 
 }

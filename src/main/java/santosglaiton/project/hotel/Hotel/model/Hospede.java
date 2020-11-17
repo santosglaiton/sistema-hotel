@@ -2,7 +2,9 @@ package santosglaiton.project.hotel.Hotel.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class Hospede implements Serializable {
@@ -10,22 +12,30 @@ public class Hospede implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idHospede;
+    @Size(min = 8, max = 150)
     private String nomeHospede;
+    @Size(min = 11, max = 11)
     private String cpf;
-    private String email;
+    private String telefone;
+    @Size(min = 8, max = 8)
+    private String cep;
 
     public Hospede() {
     }
 
-    public Hospede(Integer idHospede, String nomeHospede, String cpf, String email) {
-        this.idHospede = idHospede;
+    public Hospede(@Size(min = 8, max = 150) String nomeHospede, @Size(min = 11, max = 11) String cpf, String telefone, @Size(min = 8, max = 8) String cep) {
         this.nomeHospede = nomeHospede;
         this.cpf = cpf;
-        this.email = email;
+        this.telefone = telefone;
+        this.cep = cep;
     }
 
     public Integer getIdHospede() {
         return idHospede;
+    }
+
+    public void setIdHospede(Integer idHospede) {
+        this.idHospede = idHospede;
     }
 
     public String getNomeHospede() {
@@ -44,11 +54,44 @@ public class Hospede implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hospede hospede = (Hospede) o;
+        return idHospede.equals(hospede.idHospede);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idHospede);
+    }
+
+    @Override
+    public String toString() {
+        return "Hospede{" +
+                "idHospede=" + idHospede +
+                ", nomeHospede='" + nomeHospede + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", cep='" + cep + '\'' +
+                '}';
     }
 }
+
