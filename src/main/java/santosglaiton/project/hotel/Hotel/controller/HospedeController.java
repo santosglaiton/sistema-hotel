@@ -21,11 +21,4 @@ public class HospedeController {
         Hospede obj = hospedeService.find(id);
         return ResponseEntity.ok().body(obj);
     }
-    @PostMapping
-    public ResponseEntity<Void> insert (@Valid @RequestBody Hospede obj){
-
-
-
-        return null;
-    }
 }
