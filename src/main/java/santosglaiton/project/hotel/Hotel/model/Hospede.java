@@ -1,5 +1,8 @@
 package santosglaiton.project.hotel.Hotel.model;
 
+import com.opencsv.bean.CsvBindByName;
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -7,23 +10,25 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Data
 public class Hospede implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idHospede;
-    @Size(min = 1, max = 150)
+    @CsvBindByName
     private String nomeHospede;
-    @Size(min = 11, max = 11)
+    @CsvBindByName
     private String cpf;
-    @Size(min = 8, max = 8)
+    @CsvBindByName
     private String cep;
+    @CsvBindByName
     private String telefone;
 
     public Hospede() {
     }
 
-    public Hospede(@Size(min = 8, max = 150) String nomeHospede, @Size(min = 11, max = 11) String cpf,@Size(min = 8, max = 8) String cep, String telefone) {
+    public Hospede(String nomeHospede, String cpf,String cep, String telefone) {
         this.nomeHospede = nomeHospede;
         this.cpf = cpf;
         this.cep = cep;
@@ -93,5 +98,8 @@ public class Hospede implements Serializable {
                 ", cep='" + cep + '\'' +
                 '}';
     }
+
+
+
 }
 

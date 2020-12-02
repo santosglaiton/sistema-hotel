@@ -12,20 +12,21 @@ import java.util.List;
 public class CSVReader {
 
     public static String TYPE = "text/csv";
-    static String[] HEADER = {"Nome", "CPF", "CEP", "tELEFONE"};
+    static String[] HEADERS = {"Nome", "CPF", "CEP", "Telefone"};
 
-    public static boolean temFormatoCsv(MultipartFile file){
-        if (!TYPE.equals(file.getContentType())){
+    public static boolean temFormatoCsv(MultipartFile file) {
+        if (TYPE.equals(file.getContentType())
+                || file.getContentType().equals("application/vnd.ms-excel")) {
             return true;
         }
 
-        return  false;
+        return false;
     }
 
     public static List<Hospede> csvHospede(InputStream obj) {
-        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(obj, "UTF-8" ));
-        CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());){
-            List<Hospede> hospedes = new ArrayList<Hospede>();
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(obj));
+            CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withDelimiter(';').withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());){
+            List<Hospede> hospedes = new ArrayList<>();
 
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
