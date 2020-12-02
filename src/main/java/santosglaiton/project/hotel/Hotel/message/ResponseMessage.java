@@ -4,7 +4,7 @@ public class ResponseMessage {
 
     private String message;
 
-    public ResponseMessage (String message) {
+    public ResponseMessage(String s, String message) {
         this.message = message;
     }
 

@@ -12,22 +12,22 @@ public class Hospede implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idHospede;
-    @Size(min = 8, max = 150)
+    @Size(min = 1, max = 150)
     private String nomeHospede;
     @Size(min = 11, max = 11)
     private String cpf;
-    private String telefone;
     @Size(min = 8, max = 8)
     private String cep;
+    private String telefone;
 
     public Hospede() {
     }
 
-    public Hospede(@Size(min = 8, max = 150) String nomeHospede, @Size(min = 11, max = 11) String cpf, String telefone, @Size(min = 8, max = 8) String cep) {
+    public Hospede(@Size(min = 8, max = 150) String nomeHospede, @Size(min = 11, max = 11) String cpf,@Size(min = 8, max = 8) String cep, String telefone) {
         this.nomeHospede = nomeHospede;
         this.cpf = cpf;
-        this.telefone = telefone;
         this.cep = cep;
+        this.telefone = telefone;
     }
 
     public Integer getIdHospede() {
