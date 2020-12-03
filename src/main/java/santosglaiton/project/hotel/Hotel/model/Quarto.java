@@ -1,5 +1,6 @@
 package santosglaiton.project.hotel.Hotel.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,9 @@ public class Quarto implements Serializable {
     private Boolean quartoLimpo = false;
     private Double precoQuarto;
     private String tipoQuarto;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataCheckIn;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataCheckOut;
 
     public Quarto() {
