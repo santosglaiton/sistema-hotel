@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import santosglaiton.project.hotel.Hotel.model.Hospede;
 import santosglaiton.project.hotel.Hotel.repositories.HospedeRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,4 +30,7 @@ public class HospedeService {
         return hospedeRepository.save(obj);
     }
 
+    public List<Hospede> getAll() throws ObjectNotFoundException{
+     return this.hospedeRepository.findAll();
+    }
 }

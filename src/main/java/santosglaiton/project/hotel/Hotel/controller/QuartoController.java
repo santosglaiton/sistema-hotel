@@ -17,7 +17,7 @@ public class QuartoController {
     @Autowired
     QuartoService quartoService;
 
-    @GetMapping
+    @GetMapping("/lista")
     public ResponseEntity<List<Quarto>> findAll(){
        List<Quarto> obj = quartoService.getListaQuartosDisponiveis();
        return ResponseEntity.ok().body(obj);
@@ -26,7 +26,14 @@ public class QuartoController {
     @PostMapping("/checkin")
     public ResponseEntity<Quarto> checkin(@PathVariable Integer id) throws ObjectNotFoundException {
 
-        Quarto obj = quartoService.fazCheckIn(1);
+        Quarto obj = quartoService.fazCheckIn(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/checkout")
+    public ResponseEntity<Quarto> checkout (@PathVariable Integer id) throws ObjectNotFoundException {
+
+        Quarto obj = quartoService.fazCheckOut(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

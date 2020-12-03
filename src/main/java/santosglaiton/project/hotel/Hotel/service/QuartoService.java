@@ -1,8 +1,10 @@
 package santosglaiton.project.hotel.Hotel.service;
 
+import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import santosglaiton.project.hotel.Hotel.exceptions.QuartoNotFoundException;
+import santosglaiton.project.hotel.Hotel.model.Hospede;
 import santosglaiton.project.hotel.Hotel.model.Quarto;
 import santosglaiton.project.hotel.Hotel.repositories.QuartoRepository;
 
@@ -22,6 +24,12 @@ public class QuartoService {
 
     public QuartoService(QuartoRepository quartoRepository){
         this.quartoRepository = quartoRepository;
+    }
+
+    public Quarto find(Integer id) throws ObjectNotFoundException {
+        Optional<Quarto> obj = quartoRepository.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id:" + id + ", Tipo: " + Quarto.class.getName()));
     }
 
     public List<Quarto> getListaDeQuartosParaLimpar(){
@@ -68,8 +76,17 @@ public class QuartoService {
         return quartoRepository.findByQuartoOcupadoFalseAndQuartoLimpoTrue();
     }
 
-    //public Double calculaPrecoAPagar(Integer id, Date checkin, Date chekout, Double precoPorDia){
-
-  //  }
+    public Double calculaPrecoAPagar(Integer idQuarto){
+        Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
+        if (quartoOptional.isPresent()){
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Quarto quarto = quartoOptional.get();
+            Double precoQuarto = quarto.getPrecoQuarto();
+            Date checkin = quarto.getDataCheckIn();
+            Date checok = quarto.getDataCheckOut();
+            checkin.
+        }
+        return resultado;
+    }
 
 }

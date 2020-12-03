@@ -34,5 +34,6 @@ public class HotelApplication implements CommandLineRunner {
 		quartoRepository.save(quarto);
 
 		quartoService.fazCheckIn(1);
+		quartoService.fazCheckOut(1);
 	}
 }
