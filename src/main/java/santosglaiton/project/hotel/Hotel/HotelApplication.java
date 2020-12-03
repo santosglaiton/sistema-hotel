@@ -33,6 +33,9 @@ public class HotelApplication implements CommandLineRunner {
 		Quarto quarto = new Quarto(1, Boolean.FALSE, Boolean.TRUE, 120.0, "Normal", null, null);
 		quartoRepository.save(quarto);
 
+		Quarto quarto1 = new Quarto(2, Boolean.FALSE, Boolean.TRUE, 200.0, "Suite", null, null);
+		quartoRepository.save(quarto1);
+
 		quartoService.fazCheckIn(1);
 		quartoService.fazCheckOut(1);
 	}

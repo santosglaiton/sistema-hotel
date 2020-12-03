@@ -37,4 +37,16 @@ public class QuartoController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @GetMapping("/quartoLimpo")
+    public ResponseEntity<Quarto> limpo (@PathVariable Integer id) throws ObjectNotFoundException {
+        Quarto obj = quartoService.atualizaQuartoParaLimpo(id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @GetMapping("/sujo")
+    public ResponseEntity<List<Quarto>> quartosSujos(){
+        List<Quarto> obj = quartoService.getListaDeQuartosParaLimpar();
+        return ResponseEntity.ok().body(obj);
+    }
+
 }

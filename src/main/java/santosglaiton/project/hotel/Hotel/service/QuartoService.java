@@ -76,17 +76,18 @@ public class QuartoService {
         return quartoRepository.findByQuartoOcupadoFalseAndQuartoLimpoTrue();
     }
 
-    public Double calculaPrecoAPagar(Integer idQuarto){
-        Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
-        if (quartoOptional.isPresent()){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Quarto quarto = quartoOptional.get();
-            Double precoQuarto = quarto.getPrecoQuarto();
-            Date checkin = quarto.getDataCheckIn();
-            Date checok = quarto.getDataCheckOut();
-            checkin.
-        }
-        return resultado;
-    }
+//    public Double calculaPrecoAPagar(Integer idQuarto){
+//        Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
+//        if (quartoOptional.isPresent()){
+//            SimpleDateFormat sdf = new SimpleDateFormat();
+//            Quarto quarto = quartoOptional.get();
+//            Double precoQuarto = quarto.getPrecoQuarto();
+//            Date checkin = quarto.getDataCheckIn();
+//            Date checkout = quarto.getDataCheckOut();
+//            checkin.compareTo(checkout);
+//            checkin.
+//        }
+//        return resultado;
+//    }resultado
 
 }
